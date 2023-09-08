@@ -1,74 +1,311 @@
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: 'Poppins', sans-serif;
-  }
-  .hero{
-    width: 100%;
-    height: 100vh;
-    background-image: linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.8)),url(apartment.jpg);
-    background-size: cover;
-    background-position: center;
-    padding: 10px 10%;
-    color: #fff;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+}
+.hero{
+  width: 100%;
+  height: 100vh;
+  background-image: linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.8)),url(apartment.jpg);
+  background-size: cover;
+  background-position: center;
+  padding: 10px 10%;
+  color: #fff;
 
-  }
-  .hero h3{
-    margin-top: 5%;
-    font-weight: 800;
-    font-size: 35px;
-    font-family: monospace;
-    letter-spacing: 0.06cm;
-    text-align: center;
-
-
-  }
-  .hero h1{
-    margin-top: 100px;
-    font-size: 50px;
-    letter-spacing: 0.07cm;
-
-  }
-  .hero p{
-    margin: 10px 0 50px;
-    font-family: monospace;
-    font-size: 20px;
-    letter-spacing: 0.07cm;
+}
+.hero h3{
+  margin-top: 5%;
+  font-weight: 800;
+  font-size: 35px;
+  font-family: monospace;
+  letter-spacing: 0.06cm;
+  text-align: center;
 
 
-  }
+}
+.hero h1{
+  margin-top: 100px;
+  font-size: 46px;
+  letter-spacing: 0.2cm;
 
-  form{
-    background: #fff;
-    display: flex;
-    width: fit-content;
+}
+.hero p{
+  margin: 10px 0 50px;
+  font-family: monospace;
+  font-size: 18px;
+  letter-spacing: 0.07cm;
 
-  }
-
-  form input{
-    border: solid;
-    outline: 2px;
-    padding: 10px 20px;
-    height: 70px;
-    width: 350px;
-    font-size: 16px;
-
-
-  }
-  form button{
-    background: #61b752;
-    border: 4px;
-    outline: none;
-    height: 69px;
-    width: 100px;
-    cursor: pointer;
-
-  }
-  span{
-    color: #61b752;
-    margin-top: 20px;
-    display:block;
 
 }
 
+form{
+ 
+  display: flex;
+  width: fit-content;
+
+}
+
+form input{
+ 
+
+  
+  padding: 10px 20px;
+  height: 53px;
+  width: 270px;
+  font-size: 16px;
+  border: solid;
+
+
+}
+form button{
+  background: #61b752;
+  border: 4px;
+  outline: none;
+  height: 53px;
+  width: 75px;
+  cursor: pointer;
+
+}
+span{
+  color: #61b752;
+  margin-top: 20px;
+  display:block;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+
+.chatbot-toggler {
+position: fixed;
+bottom: 30px;
+right: 35px;
+outline: none;
+border: none;
+height: 60px;
+width: 60px;
+display: flex;
+cursor: pointer;
+align-items: center;
+justify-content: center;
+border-radius: 50%;
+background: #26c949;
+transition: all 0.2s ease;
+}
+
+body.show-chatbot .chatbot-toggler {
+
+    transform: rotate (90deg);
+}
+.chatbot-toggler span {
+    color: #fff;
+    position: absolute;
+    padding-bottom: 18px;
+    
+}
+
+.chatbot-toggler span:last-child,
+body.show-chatbot .chatbot-toggler span:first-child { 
+    opacity: 0;
+}
+body.show-chatbot .chatbot-toggler span:last-child {
+    opacity: 1;
+}
+
+.chatbot {
+position: fixed;
+right: 35px;
+bottom: 90px;
+width: 420px;
+background: #fff;
+border-radius: 15px;
+overflow: hidden;
+opacity: 0;
+pointer-events: none;
+transform: scale (0.5);
+transform-origin: bottom right;
+box-shadow: 0 0 128px 0 rgba(0,0,0,0.1),
+0 32px 64px -48px rgba(0,0,0,0.5); 
+transition: all 0.1s ease;
+background-color: transparent;
+
+}
+
+
+body.show-chatbot .chatbot {
+
+opacity: 1;
+pointer-events: auto;
+transform: scale(1);
+}
+.chatbot header {
+padding: 16px 0;
+position: relative;
+text-align: center; 
+color: #fff;
+background: #26c949;
+box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+
+}
+
+.chatbot header span {
+
+position: absolute;
+right: 15px;
+top: 50%;
+display: none;
+cursor: pointer;
+transform: translateY(-50%);
+}
+header h2 {
+font-size: 1.4rem;
+}
+.chatbot .chatbox {
+
+overflow-y: auto;
+height: 510px;
+padding: 30px 20px 100px;
+}
+.chatbot :where(.chatbox, textarea)::-webkit-scrollbar {
+    width: 6px;
+
+}
+
+.chatbot :where(.chatbox, textarea)::-webkit-scrollbar-track { 
+    background: #fff;
+    border-radius: 25px;
+}
+
+.chatbot :where(.chatbox, textarea)::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 25px;
+}
+
+.chatbox .chat {
+display: flex;
+list-style: none;
+}
+.chatbox .outgoing {
+    margin: 20px 0;
+    justify-content: flex-end;
+}
+.chatbox .incoming span {
+width: 32px;
+height: 32px;
+color: #fff;
+cursor: default; 
+text-align: center;
+line-height: 32px;
+align-self: flex-end;
+background: #26c949; 
+border-radius: 4px;
+margin: 0 10px 7px 0;
+}
+
+.chatbox .chat p {
+
+white-space: pre-wrap;
+padding: 12px 16px;
+border-radius: 10px 10px 0 10px;
+max-width: 75%;
+color: #fff;
+font-size: 0.95rem;
+background: #26c949;
+}
+.chatbox .incoming p {
+
+border-radius: 10px 10px 10px 0;
+}
+.chatbox .chat p.error {
+color: #721c24;
+background: #f8d7da;
+}
+
+.chatbox .incoming p {
+    color: #000;
+    background: #f2f2f2;
+    border-radius: 10px 10px 10px 0 ;
+}
+
+.chatbot .chat-input {
+    display: flex;
+gap: 5px;
+position: absolute;
+bottom: 0;
+width: 100%;
+background: #fff;
+padding: 3px 20px;
+border-top: 1px solid #ddd;
+height: 10%;
+background-color: transparent;
+
+}
+
+.chat-input textarea {
+height: 55px;
+width: 100%;
+border: none;
+outline: none;
+resize: none;
+max-height: 180px;
+padding: 15px 15px 15px 0; 
+font-size: 0.95rem;
+background-color: transparent;
+font-display: white;
+color: white;
+}
+
+.chat-input span {
+align-self: flex-end;
+color: #26c949;
+cursor: pointer;
+height: 55px;
+display: flex;
+align-items: center;
+visibility: hidden;
+font-size: 1.35rem;
+}
+.chat-input textarea:valid ~ span {
+visibility: visible;
+}
+@media (max-width: 490px) {
+.chatbot-toggler {
+right: 20px;
+bottom: 20px;
+}
+.chatbot {
+
+right: 0;
+bottom: 0;
+height: 100%;
+border-radius: 0;
+width: 100%;
+}
+.chatbot .chatbox {
+
+height: 90%;
+padding: 25px 15px 100px;
+}
+.chatbot .chat-input {
+padding: 5px 15px;
+}
+.chatbot header span { 
+    display: block;
+}
+} 
+
+footer p{
+  background-color: rgb(0, 0, 0);
+  text-align: center;
+  margin-bottom: auto;
+  color: #b6b4b4;
+  padding: 10px;
+  font-size: x-small;
+
+}
