@@ -6,13 +6,15 @@
     
     <title>Subscribe form to Google Sheet - Easy Tutorials</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="'https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap'">
+    <script src="script.js" defer></script>
 
 </head>
 <body>
 
     <div class="hero">
         <!-- <h3><b>FINALLY YOUR WAIT IS OVER !</b><br><br><br><br></h3> -->
-        <h1><br><br>LIVE MORE<br>COMFORTABLY<br></h1>
+        <h1><br><br>LIVE &nbsp;MORE<br>COMFORTABLY<br></h1>
         <p>THE LAUNCHING OF OUR SMART LIVING<br><br></p>
         <form name="submit-to-google-sheet">
             <input type="email" name="Email" placeholder="Your Email ID" required>
@@ -22,26 +24,31 @@
         <span id="msg"></span>
         
     </div>
-    
-    
-    <script>
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbw-O57aKEuzjWgVlyeXGIwqKHvbfZGH-b9cxXDulary4_y9-jc9iqmWTwg6EP9x4_-Oag/exec'
-        const form = document.forms['submit-to-google-sheet']
-        const msg = document.getElementById("msg")
-        form.addEventListener('submit', e => {
-          e.preventDefault()
-          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-            .then(response => {
-                msg.innerHTML="Thank you for Subscribing<BR>We Will Contact your Soon !!"
-                setTimeout(function(){
-                    msg.innerHTML=""
-                }, 5000)
-                form.reset()
 
-            }
-            )
-            .catch(error => console.error('Error!', error.message))
-        })
-      </script>
+    <button class="chatbot-toggler">
+        <span class="material-symbols-outlined">Chat</span>
+        <span class="material-symbols-outlined">Close</span>
+    </button>
+    <div class="chatbot">
+        <header>
+            <h2>Chatbot</h2>
+            <span class="close-btn material-symbols-outlined">close</span>
+        </header>
+        <ul class="chatbox">
+            <li class="chat incoming">
+                <span class="material-symbols-outlined">></span>
+                <p>Hi ! there <br>How can I help you Today ?</p>
+            </li>
+            
+        </ul>
+        <div class="chat-input">
+            
+            <textarea placeholder="Enter a message...."></textarea>
+            <span id="send-btn" class="material-symbols-outlined">>>></span>
+        </div>
+    </div>
+    
+
+
 </body>
 </html>
